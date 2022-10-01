@@ -1,0 +1,25 @@
+.navBar {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-light-gray);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  padding-inline: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  list-style: none;
+}
+
+.menuItem:nth-child(2) {
+  margin-left: 5rem;
+}
