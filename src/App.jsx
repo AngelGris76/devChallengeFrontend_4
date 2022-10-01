@@ -16,8 +16,8 @@ const App = () => {
         <NavBar {...{ activePage, setActivePage }} />
       </header>
       <MainContent {...{ activePage }} />
-      <footer>
-        <p className={style.footer}>Created by Sebastian Smuraglia</p>
+      <footer className={style.footer}>
+        <p className={style.footerText}>Created by Sebastian Smuraglia</p>
       </footer>
     </>
   );

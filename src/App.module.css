@@ -8,6 +8,13 @@
 }
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footerText {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
