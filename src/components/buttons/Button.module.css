@@ -31,3 +31,9 @@
   color: var(--color-dark-gray);
   background-color: var(--color-light-gray);
 }
+
+.iconButton {
+  padding: 0.25rem;
+  background-color: white;
+  color: var(--color-light-gray);
+}

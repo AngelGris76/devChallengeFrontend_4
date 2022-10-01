@@ -3,6 +3,7 @@ import style from './Button.module.css';
 const BUTTON_KIND = {
   primary: style.primary,
   secondary: style.secondary,
+  icon: style.iconButton,
 };
 
 const BUTTON_SIZE = {
