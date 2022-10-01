@@ -1,39 +1,38 @@
 import { useState } from 'react';
+import createItem from '../../functions/createItem';
 import Button from '../buttons/Button';
 import style from './TaskForm.module.css';
 
-const TaskForm = () => {
-  const [task, setTask] = useState('');
+const TaskForm = ({ concatTask }) => {
+  const [value, setValue] = useState('');
   return (
     <form
       className={style.form}
-      onSubmit={(ev) => handleSubmit(ev, task, setTask)}
+      onSubmit={(ev) => handleSubmit(ev, value, setValue, concatTask)}
     >
       <input
         className={style.input}
         type='text'
         placeholder='add details'
-        value={task}
-        onChange={(ev) => setTask(ev.target.value)}
+        value={value}
+        onChange={(ev) => setValue(ev.target.value)}
       />
-      <Button type='submit' disabled={!task}>
+      <Button type='submit' disabled={!value}>
         Add
       </Button>
     </form>
   );
 };
 
-const handleSubmit = (ev, task, setTask) => {
+const handleSubmit = (ev, value, setValue, concatTask) => {
   ev.preventDefault();
-  // TODO
-  // set localStorage and task array
 
-  const id = self.crypto.randomUUID();
-  const data = JSON.stringify({ value: task, completed: false });
+  const data = { value, completed: false };
 
-  window.localStorage.setItem(id, data);
+  const createdTask = createItem(data);
+  concatTask(createdTask);
 
-  setTask('');
+  setValue('');
 };
 
 export default TaskForm;
