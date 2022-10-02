@@ -42,7 +42,7 @@ const MainContent = ({ activePage }) => {
         </div>
       )}
 
-      {!renderedTask.length && <p>No hay tareas {extraText}</p>}
+      {!renderedTask.length && <p>No {extraText} tasks</p>}
     </main>
   );
 };
@@ -75,8 +75,8 @@ const getItemsToRender = (tasks, activePage, changeTaskStatus, deleteTask) => {
 
 const getExtraText = (activePage) => {
   if (activePage === ACTIVE_PAGE.all) return null;
-  if (activePage === ACTIVE_PAGE.active) return 'pendientes';
-  return 'completadas';
+  if (activePage === ACTIVE_PAGE.active) return 'pending';
+  return 'completed';
 };
 
 export default MainContent;
