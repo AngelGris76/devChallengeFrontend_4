@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
-import ACTIVE_PAGE from '../constants/activePage';
+import FILTER from '../constants/filter';
 import Link from './buttons/Link';
 import style from './NavBar.module.css';
 
-const activePageArray = Object.values(ACTIVE_PAGE);
+const activePageArray = Object.values(FILTER);
 
-const NavBar = ({ activePage, setActivePage }) => {
+const NavBar = ({ filter, setFilter }) => {
   useEffect(() => {
-    window.history.replaceState(null, '', activePage);
-  }, [activePage]);
+    window.history.replaceState(null, '', filter);
+  }, [filter]);
 
   const renderedButton = activePageArray.map((item) => (
     <li key={item} className={style.menuItem}>
       <Link
         href={item}
-        aria-pressed={activePage === item}
-        onClick={() => setActivePage(item)}
+        aria-pressed={filter === item}
+        onClick={() => setFilter(item)}
       >
         {item}
       </Link>
