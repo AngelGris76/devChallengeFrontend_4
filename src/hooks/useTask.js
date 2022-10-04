@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ACTIVE_PAGE from '../constants/activePage';
+import FILTER from '../constants/filter';
 
 const useTask = (activePage) => {
   const [tasks, setTasks] = useState([]);
@@ -61,10 +61,9 @@ const getAllTask = () => {
 const filterTasks = (tasks, filter) => {
   if (!tasks) return [];
 
-  if (filter === ACTIVE_PAGE.all) return [...tasks];
+  if (filter === FILTER.all) return [...tasks];
 
-  if (filter === ACTIVE_PAGE.active)
-    return tasks.filter((task) => !task.completed);
+  if (filter === FILTER.active) return tasks.filter((task) => !task.completed);
 
   return tasks.filter((task) => task.completed);
 };
