@@ -1,19 +1,20 @@
+import BUTTON_PROPERTIES from '../../constants/buttonProperties';
 import style from './Button.module.css';
 
 const BUTTON_KIND = {
-  primary: style.primary,
-  secondary: style.secondary,
-  icon: style.iconButton,
+  [BUTTON_PROPERTIES.primary]: style.primary,
+  [BUTTON_PROPERTIES.secondary]: style.secondary,
+  [BUTTON_PROPERTIES.icon]: style.iconButton,
 };
 
 const BUTTON_SIZE = {
-  sm: style.smallSize,
-  md: style.mediumSize,
+  [BUTTON_PROPERTIES.sm]: style.smallSize,
+  [BUTTON_PROPERTIES.md]: style.mediumSize,
 };
 
 const Button = ({
-  kind = 'primary',
-  size = 'md',
+  kind = BUTTON_PROPERTIES.primary,
+  size = BUTTON_PROPERTIES.md,
   type = 'button',
   children,
   ...props
