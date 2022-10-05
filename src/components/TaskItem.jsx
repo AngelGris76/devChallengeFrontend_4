@@ -1,10 +1,11 @@
+import { changeTaskStatus } from '../actionsBuilders/taskActionBuilder';
 import editItem from '../functions/editItem';
 import useItem from '../hooks/useItem';
 import CheckIcon from './icons/CheckIcon';
 
 import style from './TaskItem.module.css';
 
-const TaskItem = ({ item, changeTaskStatus }) => {
+const TaskItem = ({ item, taskDispatch }) => {
   const { completed, completeTask, uncompleteTask } = useItem(item.completed);
 
   const complete = completed ? style.complete : '';
@@ -25,7 +26,7 @@ const TaskItem = ({ item, changeTaskStatus }) => {
               item.value,
               completeTask,
               uncompleteTask,
-              changeTaskStatus
+              taskDispatch
             )
           }
         />
@@ -41,7 +42,7 @@ const handleChange = (
   value,
   completeTask,
   uncompleteTask,
-  changeTaskStatus
+  taskDispatch
 ) => {
   const newStatus = ev.target.checked;
 
@@ -51,7 +52,7 @@ const handleChange = (
     uncompleteTask();
   }
 
-  changeTaskStatus(id, newStatus);
+  taskDispatch(changeTaskStatus(id));
 
   const newValue = { value, completed: newStatus };
 

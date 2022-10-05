@@ -11,18 +11,15 @@ const ADITIONAL_TEXT = {
 };
 
 const MainContent = ({ filter }) => {
-  const { tasks, concatTask, changeTaskStatus, deleteTask, deleteAllTask } =
-    useTask(filter);
+  const { tasks, taskDispatch } = useTask(filter);
 
   const extraText = ADITIONAL_TEXT[filter];
 
   return (
     <main className={style.main}>
-      {filter !== FILTER.completed && <TaskForm concatTask={concatTask} />}
+      {filter !== FILTER.completed && <TaskForm taskDispatch={taskDispatch} />}
       {!tasks.length && <p>No {extraText} tasks</p>}
-      <TaskList
-        {...{ tasks, filter, changeTaskStatus, deleteTask, deleteAllTask }}
-      />
+      <TaskList {...{ tasks, filter, taskDispatch }} />
     </main>
   );
 };

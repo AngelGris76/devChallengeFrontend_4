@@ -1,44 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
+import { loadTask } from '../actionsBuilders/taskActionBuilder';
 import FILTER from '../constants/filter';
+import taskReducer from '../reducers/taskReducer';
 
 const useTask = (activePage) => {
-  const [tasks, setTasks] = useState([]);
-
-  const concatTask = (newTask) => {
-    setTasks([...tasks].concat(newTask));
-  };
-
-  const deleteTask = (taskID) => {
-    setTasks(tasks.filter(({ id }) => id !== taskID));
-  };
-
-  const deleteAllTask = () => {
-    const newTasks = tasks.filter((task) => !task.completed);
-    setTasks(newTasks);
-  };
-
-  const changeTaskStatus = (taskID, newStatus) => {
-    const taskIndex = tasks.findIndex((task) => task.id === taskID);
-    const changedTask = { ...tasks[taskIndex], completed: newStatus };
-    const elementsBefore = tasks.slice(0, taskIndex);
-    const elementsAfter = tasks.slice(taskIndex + 1);
-
-    setTasks([...elementsBefore, changedTask, ...elementsAfter]);
-  };
+  const [tasks, taskDispatch] = useReducer(taskReducer, []);
 
   useEffect(() => {
     const allTask = getAllTask();
-    setTasks(allTask);
+    taskDispatch(loadTask(allTask));
   }, []);
 
   const filteredTasks = filterTasks(tasks, activePage);
 
   return {
     tasks: filteredTasks,
-    concatTask,
-    deleteTask,
-    deleteAllTask,
-    changeTaskStatus,
+    taskDispatch,
   };
 };
 
